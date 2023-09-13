@@ -19,7 +19,7 @@ describe StatTracker do
       expect(stat_tracker).to be_a(StatTracker)
     end
 
-    it 'has attributes' do
+    it 'creates arrays for each CSV file' do
       expect(stat_tracker.games).to be_an(Array)
       expect(stat_tracker.teams).to be_an(Array)
       expect(stat_tracker.game_teams).to be_an(Array)
@@ -47,6 +47,25 @@ describe StatTracker do
       expect(stat_tracker.teams.first.abbreviation).to eq("ATL")
       expect(stat_tracker.teams.first.stadium).to eq("Mercedes-Benz Stadium")
       expect(stat_tracker.teams.first.link).to eq("/api/v1/teams/1")
+    end
+
+    it 'creates a game_team objects array with game_team attributes' do
+      expect(stat_tracker.game_teams.first).to be_a(GameTeam)
+      expect(stat_tracker.game_teams.first.game_id).to eq("2012030221")
+      expect(stat_tracker.game_teams.first.team_id).to eq("3")
+      expect(stat_tracker.game_teams.first.hoa).to eq("away")
+      expect(stat_tracker.game_teams.first.result).to eq("LOSS")
+      expect(stat_tracker.game_teams.first.settled_in).to eq("OT")
+      expect(stat_tracker.game_teams.first.head_coach).to eq("John Tortorella")
+      expect(stat_tracker.game_teams.first.goals).to eq(2)
+      expect(stat_tracker.game_teams.first.shots).to eq(8)
+      expect(stat_tracker.game_teams.first.tackles).to eq(44)
+      expect(stat_tracker.game_teams.first.pim).to eq(8)
+      expect(stat_tracker.game_teams.first.power_play_opportunities).to eq(3)
+      expect(stat_tracker.game_teams.first.power_play_goals).to eq(0)
+      expect(stat_tracker.game_teams.first.face_off_win_percentage).to eq(44.8)
+      expect(stat_tracker.game_teams.first.giveaways).to eq(17)
+      expect(stat_tracker.game_teams.first.takeaways).to eq(7)
     end
   end
 
