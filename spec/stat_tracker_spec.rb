@@ -38,19 +38,29 @@ describe StatTracker do
       expect(stat_tracker.games.first.venue).to eq("Toyota Stadium")
       expect(stat_tracker.games.first.venue_link).to eq("/api/v1/venues/null")
     end
+
+    it 'creates a team objects array with team attributes' do
+      expect(stat_tracker.teams.first).to be_a(Team)
+      expect(stat_tracker.teams.first.team_id).to eq("1")
+      expect(stat_tracker.teams.first.franchise_id).to eq("23")
+      expect(stat_tracker.teams.first.team_name).to eq("Atlanta United")
+      expect(stat_tracker.teams.first.abbreviation).to eq("ATL")
+      expect(stat_tracker.teams.first.stadium).to eq("Mercedes-Benz Stadium")
+      expect(stat_tracker.teams.first.link).to eq("/api/v1/teams/1")
+    end
   end
 
   describe 'instance methods' do
-    describe '#highest_total_score' do
-      it 'returns the highest total score' do
-        expect(stat_tracker.highest_total_score).to eq(11)
-      end
+    it 'returns the #highest_total_score' do
+      expect(stat_tracker.highest_total_score).to eq(11)
     end
 
-    describe '#lowest_total_score' do
-      it 'returns the lowest total score' do
-        expect(stat_tracker.lowest_total_score).to eq(0)
-      end
+    it 'returns the #lowest_total_score' do
+      expect(stat_tracker.lowest_total_score).to eq(0)
     end
+
+    # it 'returns the #percentage_home_wins' do
+    #   expect(stat_tracker.percentage_home_wins).to eq(0.44)
+    # end
   end
 end
