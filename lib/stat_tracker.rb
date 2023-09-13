@@ -1,5 +1,6 @@
 require 'csv'
 require_relative 'game'
+require_relative 'team'
 
 class StatTracker
   attr_reader :games,
@@ -26,7 +27,7 @@ class StatTracker
     teams = []
 
     CSV.foreach(locations[:teams], headers: true, header_converters: :symbol) do |row|
-      teams << row
+      teams << Team.new(row)
     end
 
     teams
