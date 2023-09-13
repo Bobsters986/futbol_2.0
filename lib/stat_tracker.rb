@@ -1,4 +1,5 @@
 require 'csv'
+require_relative 'game'
 
 class StatTracker
   attr_reader :games,
@@ -15,7 +16,7 @@ class StatTracker
     games = []
 
     CSV.foreach(locations[:games], headers: true, header_converters: :symbol) do |row|
-      games << row
+      games << Game.new(row)
     end
 
     games
@@ -47,13 +48,13 @@ class StatTracker
 
   def highest_total_score
     games.map do |game|
-      game[:home_goals].to_i + game[:away_goals].to_i
+      game.away_goals + game.home_goals
     end.max
   end
 
   def lowest_total_score
     games.map do |game|
-      game[:home_goals].to_i + game[:away_goals].to_i
+      game.away_goals + game.home_goals
     end.min
   end
 end
