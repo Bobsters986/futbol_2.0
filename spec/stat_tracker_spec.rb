@@ -83,7 +83,7 @@ describe StatTracker do
     end
 
     it 'returns the #percentage_away_wins' do
-      expect(stat_tracker.percentage_away_wins).to eq(0.36)
+      expect(stat_tracker.percentage_visitor_wins).to eq(0.36)
     end
 
     it 'returns the #percentage_ties' do
