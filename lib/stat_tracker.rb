@@ -66,4 +66,11 @@ class StatTracker
     end
     (home_wins.to_f / games.count.to_f).round(2)
   end
+
+  def percentage_away_wins
+    away_wins = game_teams.count do |gt|
+      gt.result == "WIN" && gt.hoa == "away"
+    end
+    (away_wins.to_f / games.count.to_f).round(2)
+  end
 end
