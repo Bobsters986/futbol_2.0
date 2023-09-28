@@ -78,8 +78,9 @@ describe StatTracker do
       expect(stat_tracker.lowest_total_score).to eq(0)
     end
 
-    # it 'returns the #percentage_home_wins' do
-    #   expect(stat_tracker.percentage_home_wins).to eq(0.44)
-    # end
+    it 'returns the #percentage_home_wins' do
+      expect(stat_tracker.percentage_home_wins).to eq(0.44)
+    end
+    
   end
 end
