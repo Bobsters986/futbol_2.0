@@ -112,5 +112,14 @@ class StatTracker
   def count_of_teams
     teams.size
   end
-  
+
+  def find_team_name(team_id)
+    teams.find do |team|
+      team.team_id == team_id
+    end.team_name
+  end
+
+  def best_offense
+    
+  end
 end
