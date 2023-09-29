@@ -86,4 +86,18 @@ class StatTracker
       hash[game.season] += 1
     end
   end
+
+  def average_goals_per_game
+    goals = 0
+
+    games.each do |game|
+      goals += (game.home_goals + game.away_goals)
+    end
+
+    total = goals / games.size.to_f
+
+    total.round(2)
+  end
+
+  
 end
