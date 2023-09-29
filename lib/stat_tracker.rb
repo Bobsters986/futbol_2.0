@@ -108,4 +108,9 @@ class StatTracker
       all_goals_per_season[season] = (goals.to_f / count_of_games_by_season[season]).round(2)
     end
   end
+
+  def count_of_teams
+    teams.size
+  end
+  
 end
