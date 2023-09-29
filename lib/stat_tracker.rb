@@ -80,4 +80,10 @@ class StatTracker
     end
     (ties.to_f / games.size.to_f).round(2)
   end
+
+  def count_of_games_by_season
+    games.each_with_object(Hash.new(0)) do |game, hash|
+      hash[game.season] += 1
+    end
+  end
 end
