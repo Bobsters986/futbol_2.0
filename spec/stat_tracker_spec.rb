@@ -122,5 +122,8 @@ describe StatTracker do
       expect(stat_tracker.count_of_teams).to eq 32
     end
   
+    it "can return #best_offense" do
+      expect(stat_tracker.best_offense).to eq "Reign FC"
+    end
   end
 end
