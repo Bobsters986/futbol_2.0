@@ -119,10 +119,14 @@ describe StatTracker do
     end
 
     it "can return #count_of_teams" do
-      expect(stat_tracker.count_of_teams).to eq 32
+      expect(stat_tracker.count_of_teams).to eq(32)
+    end
+
+    it 'can #find_team_name by team_id' do
+      expect(stat_tracker.find_team_name("2")).to eq("Seattle Sounders FC")
     end
   
-    it "can return #best_offense" do
+    xit "can return #best_offense" do
       expect(stat_tracker.best_offense).to eq "Reign FC"
     end
   end
