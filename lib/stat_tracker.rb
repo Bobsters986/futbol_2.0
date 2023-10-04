@@ -130,11 +130,15 @@ class StatTracker
     team_id_hash.each do |team_id, score_array|
       goal_average_hash[team_id] = (score_array.sum / score_array.size).round(4)
     end
-    
-    goal_average_hash.sort {|key, value| value}
+
+    goal_average_hash.sort_by {|key, value| value}
   end
 
   def best_offense
     find_team_name(team_score_averages.last[0])
+  end
+
+  def worst_offense
+    find_team_name(team_score_averages.first[0])
   end
 end
