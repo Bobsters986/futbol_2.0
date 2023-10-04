@@ -125,9 +125,46 @@ describe StatTracker do
     it 'can #find_team_name by team_id' do
       expect(stat_tracker.find_team_name("2")).to eq("Seattle Sounders FC")
     end
+
+    it "can return a #team_score_averages array" do
+      expected = [["7", 1.8362],
+      ["53", 1.8902],
+      ["1", 1.9352],
+      ["23", 1.9722],
+      ["27", 2.0231],
+      ["4", 2.0377],
+      ["12", 2.0437],
+      ["8", 2.0462],
+      ["22", 2.0467],
+      ["13", 2.0582],
+      ["17", 2.0593],
+      ["21", 2.0658],
+      ["20", 2.0677],
+      ["26", 2.0841],
+      ["9", 2.1055],
+      ["19", 2.1065],
+      ["10", 2.1067],
+      ["30", 2.1155],
+      ["3", 2.1262],
+      ["18", 2.1462],
+      ["16", 2.1648],
+      ["29", 2.1663],
+      ["52", 2.1733],
+      ["2", 2.1846],
+      ["28", 2.186],
+      ["24", 2.1954],
+      ["15", 2.2121],
+      ["14", 2.2203],
+      ["25", 2.2243],
+      ["6", 2.2627],
+      ["5", 2.2862],
+      ["54", 2.3431]]
+
+      expect(stat_tracker.team_score_averages).to eq expected
+    end
   
-    xit "can return #best_offense" do
-      expect(stat_tracker.best_offense).to eq "Reign FC"
+    it "can return #best_offense" do
+      expect(stat_tracker.best_offense).to eq("Reign FC")
     end
   end
 end
