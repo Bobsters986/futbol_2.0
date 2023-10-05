@@ -189,4 +189,20 @@ class StatTracker
 
     find_team_name(sorted_visitor_scores.first[0])
   end
+
+  def lowest_scoring_home_team
+    home_hash = Hash.new{|k,v| k[v] = []}
+    games.each do |game|
+      home_hash[game.home_team_id] << game.home_goals.to_f
+    end
+
+    home_average_hash = Hash.new
+    home_hash.each do |team_id, score_array|
+      home_average_hash[team_id] = (score_array.sum / score_array.size).round(4)
+    end
+
+    sorted_home_scores = home_average_hash.sort_by {|key, value| value}
+
+    find_team_name(sorted_home_scores.first.first)
+  end
 end
