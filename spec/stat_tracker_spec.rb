@@ -178,5 +178,9 @@ describe StatTracker do
     it "can return #highest_scoring_home_team" do
       expect(stat_tracker.highest_scoring_home_team).to eq("Reign FC")
     end
+
+    it "can return #lowest_scoring_visitor" do
+      expect(stat_tracker.lowest_scoring_visitor).to eq("San Jose Earthquakes")
+    end
   end
 end
