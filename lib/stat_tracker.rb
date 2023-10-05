@@ -141,4 +141,20 @@ class StatTracker
   def worst_offense
     find_team_name(team_score_averages.first[0])
   end
+
+  def highest_scoring_visitor
+    visitor_hash = Hash.new{|k,v| k[v] = []}
+    games.each do |game|
+      visitor_hash[game.away_team_id] << game.away_goals.to_f
+    end
+
+    visitor_average_hash = Hash.new
+    visitor_hash.each do |team_id, score_array|
+      visitor_average_hash[team_id] = (score_array.sum / score_array.size).round(4)
+    end
+
+    sorted_visitor_scores = visitor_average_hash.sort_by {|key, value| value}
+    
+    find_team_name(sorted_visitor_scores.last[0])
+  end
 end
