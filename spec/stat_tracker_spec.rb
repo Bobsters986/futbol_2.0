@@ -223,5 +223,9 @@ describe StatTracker do
     it "can return the #total_games_by_team_id" do
       expect(stat_tracker.total_games_by_team_id("6")).to eq(510)
     end
+
+    it "can return #average_win_percentage by team_id" do
+      expect(stat_tracker.average_win_percentage("6")).to eq(0.49)
+    end
   end
 end
