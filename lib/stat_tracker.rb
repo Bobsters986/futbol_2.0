@@ -219,4 +219,34 @@ class StatTracker
       "link" => team.link
     }
   end
+
+  def game_ids_by_season(team_id)
+    seasons_game_id_hash = Hash.new{|h,v| h[v] = []}
+    games.each do |game| 
+      seasons_game_id_hash[game.season] << game.game_id
+    end
+    seasons_game_id_hash
+  end
+
+  def best_season(team_id)
+    wins_by_season = Hash.new{|h,v| h[v] = []}
+    game_ids_by_season = game_ids_by_season(team_id)
+
+    game_ids_by_season.each do |season, game_id_array|
+      game_id_array.each do |game_id|
+        game_teams.each do |game_team|
+          if game_team.game_id == game_id && game_team.team_id == team_id && game_team.result == "WIN"
+            wins_by_season[season] << game_team.result
+          end
+        end
+      end
+    end
+    
+    wins_by_season.each do |season, wins|
+      wins_by_season[season] = wins.size
+    end
+
+    best_season = wins_by_season.max_by {|season, wins| wins}
+    best_season[0]
+  end
 end
