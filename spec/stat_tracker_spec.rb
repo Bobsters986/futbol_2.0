@@ -195,7 +195,7 @@ describe StatTracker do
         "abbreviation"=>"ATL",
         "link"=>"/api/v1/teams/1"
       }
-      
+
       expect(stat_tracker.team_info("1")).to eq expected
     end
 
@@ -218,6 +218,10 @@ describe StatTracker do
 
     it "can return #worst_season by team_id" do
       expect(stat_tracker.worst_season("6")).to eq("20142015")
+    end
+
+    it "can return the #total_games_by_team_id" do
+      expect(stat_tracker.total_games_by_team_id("6")).to eq(510)
     end
   end
 end
