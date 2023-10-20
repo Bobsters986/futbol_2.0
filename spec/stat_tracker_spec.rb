@@ -195,14 +195,22 @@ describe StatTracker do
         "abbreviation"=>"ATL",
         "link"=>"/api/v1/teams/1"
       }
+      
       expect(stat_tracker.team_info("1")).to eq expected
     end
 
     it "can return a teams #wins_per_season by team_id" do
-      expected =  [["20142015", 31], ["20152016", 33], ["20122013", 38], ["20162017", 45], ["20172018", 50], ["20132014", 54]]
+      expected =  [
+        ["20142015", 31], 
+        ["20152016", 33], 
+        ["20122013", 38], 
+        ["20162017", 45], 
+        ["20172018", 50], 
+        ["20132014", 54]
+      ]
+
       expect(stat_tracker.wins_per_season("6")).to eq expected
     end
-
 
     it "can return #best_season by team_id" do
       expect(stat_tracker.best_season("6")).to eq("20132014")
