@@ -228,7 +228,7 @@ class StatTracker
     seasons_game_id_hash
   end
 
-  def best_season(team_id)
+  def wins_per_season(team_id)
     wins_by_season = Hash.new{|h,v| h[v] = []}
     game_ids_by_season = game_ids_by_season(team_id)
 
@@ -241,12 +241,19 @@ class StatTracker
         end
       end
     end
-    
-    wins_by_season.each do |season, wins|
-      wins_by_season[season] = wins.size
-    end
 
-    best_season = wins_by_season.max_by {|season, wins| wins}
-    best_season[0]
+    win_totals = wins_by_season.each do |season, wins_array|
+      wins_by_season[season] = wins_array.size
+    end
+    
+    win_totals.sort_by { |k, v| v }
+  end
+
+  def best_season(team_id)
+    wins_per_season(team_id).last[0]
+  end
+
+  def worst_season(team_id)
+    wins_per_season(team_id).first[0]
   end
 end
