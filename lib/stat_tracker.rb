@@ -256,4 +256,10 @@ class StatTracker
   def worst_season(team_id)
     wins_per_season(team_id).first[0]
   end
+
+  def total_games_by_team_id(team_id)
+    game_teams.count do |game_team|
+      game_team.team_id == team_id
+    end
+  end
 end
