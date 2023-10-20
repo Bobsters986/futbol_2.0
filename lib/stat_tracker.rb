@@ -262,4 +262,15 @@ class StatTracker
       game_team.team_id == team_id
     end
   end
+
+  def average_win_percentage(team_id)
+    wins = 0
+    game_teams.each do |game_team|
+      if game_team.team_id == team_id && game_team.result == "WIN"
+        wins += 1
+      end
+    end
+  
+    (wins.to_f / total_games_by_team_id(team_id)).round(2)
+  end
 end
