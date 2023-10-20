@@ -231,5 +231,9 @@ describe StatTracker do
     it "can return #most_goals_scored by team_id" do
       expect(stat_tracker.most_goals_scored("18")).to eq(7)
     end
+
+    it "can return #fewest_goals_scored by team_id" do
+      expect(stat_tracker.fewest_goals_scored("18")).to eq(0)
+    end
   end
 end
