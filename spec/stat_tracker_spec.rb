@@ -201,5 +201,9 @@ describe StatTracker do
     it "can return #best_season by team_id" do
       expect(stat_tracker.best_season("6")).to eq("20132014")
     end
+
+    it "can return #worst_season by team_id" do
+      expect(stat_tracker.worst_season("6")).to eq("20142015")
+    end
   end
 end
