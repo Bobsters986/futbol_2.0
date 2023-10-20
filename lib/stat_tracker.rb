@@ -283,4 +283,14 @@ class StatTracker
     end
     goals
   end
+
+  def fewest_goals_scored(team_id)
+    goals = 50
+    game_teams.each do |game_team|
+      if game_team.team_id == team_id && game_team.goals < goals
+        goals = game_team.goals
+      end
+    end
+    goals
+  end
 end
