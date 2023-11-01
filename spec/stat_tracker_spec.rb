@@ -240,6 +240,11 @@ describe StatTracker do
       expect(stat_tracker.get_game_id_array("18").size).to eq(513)
     end
 
+    it "can return #opponent_match_results hash of wins and losses by team_id" do
+      expect(stat_tracker.opponent_match_results("18")).to be_a(Hash)
+      expect(stat_tracker.opponent_match_results("18").size).to eq(31)
+    end
+
     xit "can return #favorite_opponent by team_id" do
       expect(stat_tracker.favorite_opponent("18")).to eq("DC United")
     end
