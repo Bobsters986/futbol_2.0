@@ -324,4 +324,9 @@ class StatTracker
     end
     opponent_win_percentage.sort_by { |k, v| v }
   end
+
+  def favorite_opponent(team_id)
+    fav_opponent_id = opponents_win_percentage(team_id).first[0]
+    find_team_name(fav_opponent_id)
+  end
 end

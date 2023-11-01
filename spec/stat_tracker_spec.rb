@@ -283,7 +283,7 @@ describe StatTracker do
       expect(stat_tracker.opponents_win_percentage("18")).to eq expected
     end
 
-    xit "can return #favorite_opponent by team_id" do
+    it "can return #favorite_opponent by team_id" do
       expect(stat_tracker.favorite_opponent("18")).to eq("DC United")
     end
   end
