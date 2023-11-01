@@ -286,5 +286,9 @@ describe StatTracker do
     it "can return #favorite_opponent by team_id" do
       expect(stat_tracker.favorite_opponent("18")).to eq("DC United")
     end
+
+    it "can return #rival by team_id" do
+      expect(stat_tracker.rival("18")).to eq("Houston Dash").or eq("LA Galaxy")
+    end
   end
 end
