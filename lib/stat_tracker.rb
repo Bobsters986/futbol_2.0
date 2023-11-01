@@ -303,4 +303,16 @@ class StatTracker
 
     all_games.map { |game| game.game_id }
   end
+
+  def opponent_match_results(team_id)
+    opponent_match_results = Hash.new { |k, v| k[v] = [] }
+
+    get_game_id_array(team_id).each do |game_id|
+      game_teams.each do |game_team|
+        opponent_match_results[game_team.team_id] << game_team.result if game_team.game_id == game_id && game_team.team_id != team_id
+      end
+    end
+    opponent_match_results
+  end
+  
 end
