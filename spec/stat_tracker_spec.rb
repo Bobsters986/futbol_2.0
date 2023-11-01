@@ -245,6 +245,44 @@ describe StatTracker do
       expect(stat_tracker.opponent_match_results("18").size).to eq(31)
     end
 
+    it " can return an array of #opponents_win_percentage vs the team_id provided" do
+      expected = [["14", 0.0],
+      ["9", 0.2],
+      ["4", 0.2],
+      ["22", 0.22],
+      ["53", 0.25],
+      ["24", 0.26],
+      ["3", 0.3],
+      ["6", 0.3],
+      ["7", 0.3],
+      ["8", 0.3],
+      ["27", 0.33],
+      ["54", 0.33],
+      ["16", 0.37],
+      ["25", 0.37],
+      ["21", 0.38],
+      ["23", 0.39],
+      ["20", 0.39],
+      ["29", 0.4],
+      ["1", 0.4],
+      ["12", 0.4],
+      ["2", 0.4],
+      ["30", 0.41],
+      ["28", 0.44],
+      ["19", 0.44],
+      ["26", 0.44],
+      ["52", 0.45],
+      ["10", 0.5],
+      ["15", 0.5],
+      ["5", 0.56],
+      ["13", 0.6],
+      ["17", 0.64]]
+
+      expect(stat_tracker.opponents_win_percentage("18")).to be_an(Array)
+      expect(stat_tracker.opponents_win_percentage("18").size).to eq(31)
+      expect(stat_tracker.opponents_win_percentage("18")).to eq expected
+    end
+
     xit "can return #favorite_opponent by team_id" do
       expect(stat_tracker.favorite_opponent("18")).to eq("DC United")
     end
