@@ -293,4 +293,14 @@ class StatTracker
     end
     goals
   end
+
+  # the #favorite_opponent is the opponent that has the lowest win percentage against the given team in the argument.
+  # it is calculated by only looking at games where the argument of the given team_id was the home team.
+  # it iterates through all of the games where the given team_id was the home team and then iterates through all of the game_teams
+  # #favorite_opponent utilizes the several helper methods of #get_game_id_array, #opponent_match_results, and #opponents_win_percentage
+  def get_game_id_array(team_id)
+    all_games = game_teams.find_all { |team| team.team_id == team_id }
+
+    all_games.map { |game| game.game_id }
+  end
 end
