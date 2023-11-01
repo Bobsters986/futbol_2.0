@@ -329,4 +329,9 @@ class StatTracker
     fav_opponent_id = opponents_win_percentage(team_id).first[0]
     find_team_name(fav_opponent_id)
   end
+
+  def rival(team_id)
+    rival_id = opponents_win_percentage(team_id).last[0]
+    find_team_name(rival_id)
+  end
 end
