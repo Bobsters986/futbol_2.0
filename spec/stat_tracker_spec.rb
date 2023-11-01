@@ -235,5 +235,13 @@ describe StatTracker do
     it "can return #fewest_goals_scored by team_id" do
       expect(stat_tracker.fewest_goals_scored("18")).to eq(0)
     end
+
+    it "can #get_game_id_array by team_id for a specific team" do
+      expect(stat_tracker.get_game_id_array("18").size).to eq(513)
+    end
+
+    xit "can return #favorite_opponent by team_id" do
+      expect(stat_tracker.favorite_opponent("18")).to eq("DC United")
+    end
   end
 end
