@@ -314,5 +314,14 @@ class StatTracker
     end
     opponent_match_results
   end
-  
+
+  def opponents_win_percentage(team_id)
+    opponent_win_percentage = Hash.new { |k, v| k[v] = [] }
+
+    opponent_match_results(team_id).each do |opponent_id, results|
+      wins = results.count { |result| result == "WIN" }
+      opponent_win_percentage[opponent_id] = (wins.to_f / results.size).round(2)
+    end
+    opponent_win_percentage.sort_by { |k, v| v }
+  end
 end
