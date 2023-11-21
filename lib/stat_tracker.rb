@@ -369,4 +369,8 @@ class StatTracker
   def winningest_coach(season_id)
     coach_win_percentage(season_id).max_by{|k,v| v}.first
   end
+
+  def worst_coach(season_id)
+    coach_win_percentage(season_id).min_by{|k,v| v}.first
+  end
 end
