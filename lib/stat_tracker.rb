@@ -334,4 +334,14 @@ class StatTracker
     rival_id = opponents_win_percentage(team_id).last[0]
     find_team_name(rival_id)
   end
+
+  def array_of_gameids_by_season(season)
+    games_by_season = games.find_all do |game|     
+      game.season == season
+    end
+
+    game_ids_arr = games_by_season.map do |game|
+      game.game_id
+    end
+  end
 end
