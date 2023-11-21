@@ -295,5 +295,11 @@ describe StatTracker do
       expect(stat_tracker.array_of_gameids_by_season("20142015")).to be_an(Array)
       expect(stat_tracker.array_of_gameids_by_season("20142015").size).to eq(1319)
     end
+
+    it "can return an #array_of_game_teams_by_season" do
+      expect(stat_tracker.array_of_game_teams_by_season("20142015")).to be_an(Array)
+      expect(stat_tracker.array_of_game_teams_by_season("20142015").first).to be_a(GameTeam)
+      expect(stat_tracker.array_of_game_teams_by_season("20142015").size).to eq(2638)
+    end
   end
 end
