@@ -354,4 +354,15 @@ class StatTracker
     end
     game_teams_array
   end
+
+  def coach_win_percentage(season_id)
+    coaches_hash = Hash.new{|h,v| h[v] = []}
+    array_of_game_teams_by_season(season_id).each do |game_team|
+      coaches_hash[game_team.head_coach] << game_team.result
+    end
+  
+    coaches_hash.each do |coach, results|
+      coaches_hash[coach] = (results.count("WIN").to_f / results.size).round(2)
+    end
+  end
 end
