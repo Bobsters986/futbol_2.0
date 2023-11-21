@@ -365,4 +365,8 @@ class StatTracker
       coaches_hash[coach] = (results.count("WIN").to_f / results.size).round(2)
     end
   end
+
+  def winningest_coach(season_id)
+    coach_win_percentage(season_id).max_by{|k,v| v}.first
+  end
 end
