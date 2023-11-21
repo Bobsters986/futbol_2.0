@@ -344,4 +344,14 @@ class StatTracker
       game.game_id
     end
   end
+
+  def array_of_game_teams_by_season(season)
+    game_teams_array = []
+    array_of_gameids_by_season(season).each do |game_id|
+      game_teams.each do |game_team|
+        game_teams_array << game_team if game_team.game_id == game_id
+      end
+    end
+    game_teams_array
+  end
 end
