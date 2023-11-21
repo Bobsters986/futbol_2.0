@@ -290,5 +290,10 @@ describe StatTracker do
     it "can return #rival by team_id" do
       expect(stat_tracker.rival("18")).to eq("Houston Dash").or eq("LA Galaxy")
     end
+
+    it "can return an #array_of_gameids_by_season" do
+      expect(stat_tracker.array_of_gameids_by_season("20142015")).to be_an(Array)
+      expect(stat_tracker.array_of_gameids_by_season("20142015").size).to eq(1319)
+    end
   end
 end
