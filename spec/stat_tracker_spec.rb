@@ -308,5 +308,10 @@ describe StatTracker do
       expect(stat_tracker.coach_win_percentage("20142015").first[0]).to be_a(String)
       expect(stat_tracker.coach_win_percentage("20142015").first[1]).to be_a(Float)
     end
+
+    it "can return winningest_coach by season_id" do
+      expect(stat_tracker.winningest_coach("20132014")).to eq("Claude Julien")
+      expect(stat_tracker.winningest_coach("20142015")).to eq("Alain Vigneault")
+    end
   end
 end
