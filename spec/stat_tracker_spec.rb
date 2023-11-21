@@ -301,5 +301,12 @@ describe StatTracker do
       expect(stat_tracker.array_of_game_teams_by_season("20142015").first).to be_a(GameTeam)
       expect(stat_tracker.array_of_game_teams_by_season("20142015").size).to eq(2638)
     end
+
+    it "can return #coach_win_percentage by season_id" do
+      expect(stat_tracker.coach_win_percentage("20142015")).to be_a(Hash)
+      expect(stat_tracker.coach_win_percentage("20142015").size).to eq(35)
+      expect(stat_tracker.coach_win_percentage("20142015").first[0]).to be_a(String)
+      expect(stat_tracker.coach_win_percentage("20142015").first[1]).to be_a(Float)
+    end
   end
 end
