@@ -389,4 +389,20 @@ class StatTracker
 
     find_team_name(shots_hash.max_by{|k,v| v}.first)
   end
+
+  def least_accurate_team(season_id)
+    shots_hash = Hash.new{|k,v| k[v] = []}
+    goals_hash = Hash.new{|k,v| k[v] = []}
+
+    array_of_game_teams_by_season(season_id).each do |game_team|
+      shots_hash[game_team.team_id] << game_team.shots
+      goals_hash[game_team.team_id] << game_team.goals
+    end
+
+    shots_hash.each do |team_id, shots|
+      shots_hash[team_id] = (goals_hash[team_id].sum / shots.sum.to_f).round(3)
+    end
+    
+    find_team_name(shots_hash.sort_by{|k,v| v}.first.first)
+  end
 end
