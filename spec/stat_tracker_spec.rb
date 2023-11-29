@@ -328,5 +328,10 @@ describe StatTracker do
       expect(stat_tracker.least_accurate_team("20132014")).to eq("New York City FC")
       expect(stat_tracker.least_accurate_team("20142015")).to eq("Columbus Crew SC")
     end
+
+    it "can return #most_tackles by season_id" do
+      expect(stat_tracker.most_tackles("20132014")).to eq("FC Cincinnati")
+      expect(stat_tracker.most_tackles("20142015")).to eq("Seattle Sounders FC")
+    end
   end
 end
