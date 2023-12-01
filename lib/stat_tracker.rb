@@ -415,4 +415,14 @@ class StatTracker
 
     find_team_name(tackles_hash.max_by{|k,v| v}.first)
   end
+
+  def fewest_tackles(season_id)
+    tackles_hash = Hash.new{|k,v| k[v] = 0}
+
+    array_of_game_teams_by_season(season_id).each do |game_team|
+      tackles_hash[game_team.team_id] += game_team.tackles
+    end
+
+    find_team_name(tackles_hash.min_by{|k,v| v}.first)
+  end
 end
